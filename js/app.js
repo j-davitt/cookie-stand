@@ -4,9 +4,11 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 
 // *****DOM WINDOWS******
 
+let locationData = document.getElementById('location-data');
+
 // ******HELPER FUNCTIONS / UTILITIES******
 
-function randomCust(min,max){
+function randomCust(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -20,6 +22,8 @@ let seattle = {
   cookiesBought: []
 };
 
+// ******DOM MANIPULATION******
+
 let tokyo = {
   name: 'Tokyo',
   minCust: 3,
@@ -27,6 +31,8 @@ let tokyo = {
   avgCookie: 1.2,
   cookiesBought: []
 };
+
+// ******DOM MANIPULATION******
 
 let dubai = {
   name: 'Dubai',
@@ -36,6 +42,8 @@ let dubai = {
   cookiesBought: []
 };
 
+// ******DOM MANIPULATION******
+
 let paris = {
   name: 'Paris',
   minCust: 20,
@@ -43,6 +51,8 @@ let paris = {
   avgCookie: 2.3,
   cookiesBought: []
 };
+
+// ******DOM MANIPULATION******
 
 let lima = {
   name: 'Lima',
