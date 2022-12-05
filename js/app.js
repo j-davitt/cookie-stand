@@ -24,13 +24,13 @@ let seattle = {
   maxCust: 65,
   avgCookie: 6.3,
   cookiesBought: [],
-  getCookiesBought: function(){
-    for(let i = 0; i < hours.length; i++){
+  getCookiesBought: function () {
+    for (let i = 0; i < hours.length; i++) {
       this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
     }
   },
-  render: function(){
-// ******DOM MANIPULATION******
+  render: function () {
+    // ******DOM MANIPULATION******
 
     let articleElem = document.createElement('article');
     locationSection.appendChild(articleElem);
@@ -42,7 +42,7 @@ let seattle = {
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
 
-    for(let i = 0; i < this.cookiesBought.length; i++){
+    for (let i = 0; i < this.cookiesBought.length; i++) {
       let liElem = document.createElement('li');
       liElem.innerText = this.cookiesBought[i];
       ulElem.appendChild(liElem);
@@ -57,13 +57,13 @@ let tokyo = {
   maxCust: 24,
   avgCookie: 1.2,
   cookiesBought: [],
-  getCookiesBought: function(){
-    for(let i = 0; i < hours.length; i++){
+  getCookiesBought: function () {
+    for (let i = 0; i < hours.length; i++) {
       this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
     }
   },
-  render: function(){
-// ******DOM MANIPULATION******
+  render: function () {
+    // ******DOM MANIPULATION******
 
     let articleElem = document.createElement('article');
     locationSection.appendChild(articleElem);
@@ -75,7 +75,7 @@ let tokyo = {
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
 
-    for(let i = 0; i < this.cookiesBought.length; i++){
+    for (let i = 0; i < this.cookiesBought.length; i++) {
       let liElem = document.createElement('li');
       liElem.innerText = this.cookiesBought[i];
       ulElem.appendChild(liElem);
@@ -91,13 +91,13 @@ let dubai = {
   maxCust: 38,
   avgCookie: 3.7,
   cookiesBought: [],
-  getCookiesBought: function(){
-    for(let i = 0; i < hours.length; i++){
+  getCookiesBought: function () {
+    for (let i = 0; i < hours.length; i++) {
       this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
     }
   },
-  render: function(){
-// ******DOM MANIPULATION******
+  render: function () {
+    // ******DOM MANIPULATION******
 
     let articleElem = document.createElement('article');
     locationSection.appendChild(articleElem);
@@ -109,7 +109,7 @@ let dubai = {
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
 
-    for(let i = 0; i < this.cookiesBought.length; i++){
+    for (let i = 0; i < this.cookiesBought.length; i++) {
       let liElem = document.createElement('li');
       liElem.innerText = this.cookiesBought[i];
       ulElem.appendChild(liElem);
@@ -125,13 +125,13 @@ let paris = {
   maxCust: 38,
   avgCookie: 2.3,
   cookiesBought: [],
-  getCookiesBought: function(){
-    for(let i = 0; i < hours.length; i++){
+  getCookiesBought: function () {
+    for (let i = 0; i < hours.length; i++) {
       this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
     }
   },
-  render: function(){
-// ******DOM MANIPULATION******
+  render: function () {
+    // ******DOM MANIPULATION******
 
     let articleElem = document.createElement('article');
     locationSection.appendChild(articleElem);
@@ -143,7 +143,7 @@ let paris = {
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
 
-    for(let i = 0; i < this.cookiesBought.length; i++){
+    for (let i = 0; i < this.cookiesBought.length; i++) {
       let liElem = document.createElement('li');
       liElem.innerText = this.cookiesBought[i];
       ulElem.appendChild(liElem);
@@ -159,13 +159,13 @@ let lima = {
   maxCust: 16,
   avgCookie: 4.6,
   cookiesBought: [],
-  getCookiesBought: function(){
-    for(let i = 0; i < hours.length; i++){
+  getCookiesBought: function () {
+    for (let i = 0; i < hours.length; i++) {
       this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
     }
   },
-  render: function(){
-// ******DOM MANIPULATION******
+  render: function () {
+    // ******DOM MANIPULATION******
 
     let articleElem = document.createElement('article');
     locationSection.appendChild(articleElem);
@@ -177,7 +177,7 @@ let lima = {
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
 
-    for(let i = 0; i < this.cookiesBought.length; i++){
+    for (let i = 0; i < this.cookiesBought.length; i++) {
       let liElem = document.createElement('li');
       liElem.innerText = this.cookiesBought[i];
       ulElem.appendChild(liElem);
