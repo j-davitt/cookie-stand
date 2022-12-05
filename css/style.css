@@ -1,3 +1,36 @@
 body {
-  
+  background-color: lightblue;
+}
+
+section{
+  width: 75%;
+  margin: auto;
+  background-color: darkcyan;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 50px;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 35px;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+}
+
+ul {
+  font-family: Arial, Helvetica;
+  color: blue;
+  background-color: lightgray;
+  width: max-content;
+  padding: 5px;
+}
+
+#salmon-pic img {
+  width:75%;
 }
