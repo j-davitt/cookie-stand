@@ -1,16 +1,20 @@
+'use strict';
+
 // ******GLOBALS******
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 // *****DOM WINDOWS******
 
-let locationData = document.getElementById('location-data');
+let locationSection = document.getElementById('location-data');
 
 // ******HELPER FUNCTIONS / UTILITIES******
 
 function randomCust(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+
 
 // ******OBJECT LITERALS******
 
@@ -19,10 +23,33 @@ let seattle = {
   minCust: 23,
   maxCust: 65,
   avgCookie: 6.3,
-  cookiesBought: []
+  cookiesBought: [],
+  getCookiesBought: function(){
+    for(let i = 0; i < hours.length; i++){
+      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+    }
+  },
+  render: function(){
+// ******DOM MANIPULATION******
+
+    let articleElem = document.createElement('article');
+    locationSection.appendChild(articleElem);
+
+    let h3Elem = document.createElement('h3');
+    h3Elem.innerText = this.name;
+    articleElem.appendChild(h3Elem);
+
+    let ulElem = document.createElement('ul');
+    articleElem.appendChild(ulElem);
+
+    for(let i = 0; i < this.cookiesBought.length; i++){
+      let liElem = document.createElement('li');
+      liElem.innerText = this.cookiesBought[i];
+      ulElem.appendChild(liElem);
+    }
+  }
 };
 
-// ******DOM MANIPULATION******
 
 let tokyo = {
   name: 'Tokyo',
@@ -32,7 +59,7 @@ let tokyo = {
   cookiesBought: []
 };
 
-// ******DOM MANIPULATION******
+
 
 let dubai = {
   name: 'Dubai',
@@ -42,7 +69,7 @@ let dubai = {
   cookiesBought: []
 };
 
-// ******DOM MANIPULATION******
+
 
 let paris = {
   name: 'Paris',
@@ -52,7 +79,7 @@ let paris = {
   cookiesBought: []
 };
 
-// ******DOM MANIPULATION******
+
 
 let lima = {
   name: 'Lima',
@@ -62,4 +89,8 @@ let lima = {
   cookiesBought: []
 };
 
-// ******DOM MANIPULATION******
+// *******EXECUTABLE CODE******
+
+seattle.getCookiesBought();
+seattle.render();
+
