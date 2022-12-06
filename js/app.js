@@ -9,7 +9,7 @@ let hourlyTotals = [];
 
 // *****DOM WINDOWS******
 
-let locationSection = document.getElementById('location-data');
+// let locationSection = document.getElementById('location-data');
 let tableElem = document.getElementById('sales-table');
 
 // ******HELPER FUNCTIONS / UTILITIES******
@@ -57,21 +57,21 @@ Store.prototype.render = function () {
 
 // *******EXECUTABLE CODE******
 
-function tableHours(){
+function tableHours() {
   let row1 = document.createElement('tr');
   tableElem.appendChild(row1);
 
   let blankElem = document.createElement('th');
   row1.appendChild(blankElem);
 
-  for(let i = 0; i < hours.length; i++){
+  for (let i = 0; i < hours.length; i++) {
     let headElem = document.createElement('th');
     headElem.innerText = hours[i];
     row1.appendChild(headElem);
   }
 }
 
-function tableTotals(){
+function tableTotals() {
   let row1 = document.createElement('tr');
   tableElem.appendChild(row1);
 
@@ -79,7 +79,7 @@ function tableTotals(){
   blankElem.innerText = 'Totals';
   row1.appendChild(blankElem);
 
-  for(let i = 0; i < hourlyTotals.length; i++){
+  for (let i = 0; i < hourlyTotals.length; i++) {
     let headElem = document.createElement('th');
     headElem.innerText = hourlyTotals[i];
     row1.appendChild(headElem);
@@ -102,19 +102,15 @@ function renderAll() {
   }
 }
 
-function hourlyTotalCookies(){
-  for(let i = 0; i < hours.length; i++){
+function hourlyTotalCookies() {
+  for (let i = 0; i < hours.length; i++) {
     let hourlyCookies = 0;
-    for(let j = 0; j < storeArray.length; j++){
+    for (let j = 0; j < storeArray.length; j++) {
       hourlyCookies += storeArray[j]['cookiesBought'][i];
     }
     hourlyTotals.push(hourlyCookies);
   }
 }
-// Hourly totals for all stores. Get the total per hour of each store and add together then push to an array. then loop to the next hour. Grab index i 
-
-// storeArray[0]['cookiesBought']
-
 
 tableHours();
 
