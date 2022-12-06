@@ -25,9 +25,13 @@ let seattle = {
   avgCookie: 6.3,
   cookiesBought: [],
   getCookiesBought: function () {
+    let cookiesTotal = 0;
     for (let i = 0; i < hours.length; i++) {
-      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+      let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
+      this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+      cookiesTotal += cookies;
     }
+    this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
   },
   render: function () {
     // ******DOM MANIPULATION******
@@ -58,9 +62,13 @@ let tokyo = {
   avgCookie: 1.2,
   cookiesBought: [],
   getCookiesBought: function () {
+    let cookiesTotal = 0;
     for (let i = 0; i < hours.length; i++) {
-      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+      let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
+      this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+      cookiesTotal += cookies;
     }
+    this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
   },
   render: function () {
     // ******DOM MANIPULATION******
@@ -92,9 +100,13 @@ let dubai = {
   avgCookie: 3.7,
   cookiesBought: [],
   getCookiesBought: function () {
+    let cookiesTotal = 0;
     for (let i = 0; i < hours.length; i++) {
-      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+      let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
+      this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+      cookiesTotal += cookies;
     }
+    this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
   },
   render: function () {
     // ******DOM MANIPULATION******
@@ -126,9 +138,13 @@ let paris = {
   avgCookie: 2.3,
   cookiesBought: [],
   getCookiesBought: function () {
+    let cookiesTotal = 0;
     for (let i = 0; i < hours.length; i++) {
-      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+      let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
+      this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+      cookiesTotal += cookies;
     }
+    this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
   },
   render: function () {
     // ******DOM MANIPULATION******
@@ -160,9 +176,13 @@ let lima = {
   avgCookie: 4.6,
   cookiesBought: [],
   getCookiesBought: function () {
+    let cookiesTotal = 0;
     for (let i = 0; i < hours.length; i++) {
-      this.cookiesBought.push(hours[i] + ': ' + Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie) + ' cookies');
+      let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
+      this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+      cookiesTotal += cookies;
     }
+    this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
   },
   render: function () {
     // ******DOM MANIPULATION******
