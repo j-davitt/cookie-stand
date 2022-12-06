@@ -31,6 +31,15 @@ ul {
   padding: 5px;
 }
 
+table, th, td {
+  border: 1px double;
+  padding: 3px;
+}
+
+th {
+  font-weight: bold;
+}
+
 #salmon-pic img {
   width:75%;
 }
