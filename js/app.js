@@ -2,14 +2,14 @@
 
 // ******GLOBALS******
 
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+let hours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Total'];
 
 let storeArray = [];
 
 // *****DOM WINDOWS******
 
 let locationSection = document.getElementById('location-data');
-let tableSection = document.getElementById('sales-table');
+let tableElem = document.getElementById('sales-table');
 
 // ******HELPER FUNCTIONS / UTILITIES******
 
@@ -31,33 +31,40 @@ function Store(a, b, c, d) {
 
 Store.prototype.getCookiesBought = function () {
   let cookiesTotal = 0;
-  for (let i = 0; i < hours.length; i++) {
+  for (let i = 0; i < hours.length - 2; i++) {
     let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
-    this.cookiesBought.push(hours[i] + ': ' + cookies + ' cookies');
+    this.cookiesBought.push(cookies);
     cookiesTotal += cookies;
   }
-  this.cookiesBought.push('Total: ' + cookiesTotal + ' cookies');
+  this.cookiesBought.push(cookiesTotal);
 };
 
 Store.prototype.render = function () {
-  let articleElem = document.createElement('article');
-  locationSection.appendChild(articleElem);
+  let rowElem = document.createElement('tr');
+  tableElem.appendChild(rowElem);
 
-  let h3Elem = document.createElement('h3');
-  h3Elem.innerText = this.name;
-  articleElem.appendChild(h3Elem);
-
-  let ulElem = document.createElement('ul');
-  articleElem.appendChild(ulElem);
+  let storeElem = document.createElement('td');
+  storeElem.innerText = this.name;
+  rowElem.appendChild(storeElem);
 
   for (let i = 0; i < this.cookiesBought.length; i++) {
-    let liElem = document.createElement('li');
-    liElem.innerText = this.cookiesBought[i];
-    ulElem.appendChild(liElem);
+    let tdElem = document.createElement('td');
+    tdElem.innerText = this.cookiesBought[i];
+    rowElem.appendChild(tdElem);
   }
 };
 
 // *******EXECUTABLE CODE******
+
+function tableHours(){
+  let row1 = document.createElement('tr');
+  tableElem.appendChild(row1);
+  for(let i = 0; i < hours.length; i++){
+    let headElem = document.createElement('th');
+    headElem.innerText = hours[i];
+    row1.appendChild(headElem);
+  }
+}
 
 let seattle = new Store('Seattle', 23, 65, 6.3);
 let tokyo = new Store('Tokyo', 3, 24, 1.2);
@@ -74,6 +81,8 @@ function renderAll() {
     storeArray[i].render();
   }
 }
+
+tableHours();
 
 renderAll();
 
