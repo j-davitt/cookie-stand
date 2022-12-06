@@ -36,6 +36,10 @@ table, th, td {
   padding: 3px;
 }
 
+th {
+  font-weight: bold;
+}
+
 #salmon-pic img {
   width:75%;
 }
