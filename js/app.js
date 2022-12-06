@@ -2,9 +2,10 @@
 
 // ******GLOBALS******
 
-let hours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Total'];
+let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Total'];
 
 let storeArray = [];
+let hourlyTotals = [];
 
 // *****DOM WINDOWS******
 
@@ -31,7 +32,7 @@ function Store(a, b, c, d) {
 
 Store.prototype.getCookiesBought = function () {
   let cookiesTotal = 0;
-  for (let i = 0; i < hours.length - 2; i++) {
+  for (let i = 0; i < hours.length - 1; i++) {
     let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
     this.cookiesBought.push(cookies);
     cookiesTotal += cookies;
@@ -59,9 +60,28 @@ Store.prototype.render = function () {
 function tableHours(){
   let row1 = document.createElement('tr');
   tableElem.appendChild(row1);
+
+  let blankElem = document.createElement('th');
+  row1.appendChild(blankElem);
+
   for(let i = 0; i < hours.length; i++){
     let headElem = document.createElement('th');
     headElem.innerText = hours[i];
+    row1.appendChild(headElem);
+  }
+}
+
+function tableTotals(){
+  let row1 = document.createElement('tr');
+  tableElem.appendChild(row1);
+
+  let blankElem = document.createElement('th');
+  blankElem.innerText = 'Totals';
+  row1.appendChild(blankElem);
+
+  for(let i = 0; i < hourlyTotals.length; i++){
+    let headElem = document.createElement('th');
+    headElem.innerText = hourlyTotals[i];
     row1.appendChild(headElem);
   }
 }
@@ -82,9 +102,27 @@ function renderAll() {
   }
 }
 
+function hourlyTotalCookies(){
+  for(let i = 0; i < hours.length; i++){
+    let hourlyCookies = 0;
+    for(let j = 0; j < storeArray.length; j++){
+      hourlyCookies += storeArray[j]['cookiesBought'][i];
+    }
+    hourlyTotals.push(hourlyCookies);
+  }
+}
+// Hourly totals for all stores. Get the total per hour of each store and add together then push to an array. then loop to the next hour. Grab index i 
+
+// storeArray[0]['cookiesBought']
+
+
 tableHours();
 
 renderAll();
+
+hourlyTotalCookies();
+
+tableTotals();
 
 // seattle.getCookiesBought();
 // seattle.render();
