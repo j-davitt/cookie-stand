@@ -111,7 +111,7 @@ function hourlyTotalCookies() {
   for (let i = 0; i <= hours.length; i++) {
     let hourlyCookies = 0;
     for (let j = 0; j < storeArray.length; j++) {
-      hourlyCookies += storeArray[j]['cookiesBought'][i];
+      hourlyCookies += storeArray[j].cookiesBought[i];
     }
     hourlyTotals.push(hourlyCookies);
   }
