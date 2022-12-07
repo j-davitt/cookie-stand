@@ -2,7 +2,7 @@
 
 // ******GLOBALS******
 
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', 'Daily Total'];
+let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
 let storeArray = [];
 let hourlyTotals = [];
@@ -32,7 +32,7 @@ function Store(a, b, c, d) {
 
 Store.prototype.getCookiesBought = function () {
   let cookiesTotal = 0;
-  for (let i = 0; i < hours.length - 1; i++) {
+  for (let i = 0; i < hours.length; i++) {
     let cookies = Math.floor(randomCust(this.minCust, this.maxCust) * this.avgCookie);
     this.cookiesBought.push(cookies);
     cookiesTotal += cookies;
@@ -62,6 +62,7 @@ function tableHours() {
   tableElem.appendChild(row1);
 
   let blankElem = document.createElement('th');
+  blankElem.innerText = 'Stores';
   row1.appendChild(blankElem);
 
   for (let i = 0; i < hours.length; i++) {
@@ -69,6 +70,10 @@ function tableHours() {
     headElem.innerText = hours[i];
     row1.appendChild(headElem);
   }
+
+  let headerTotalElem = document.createElement('th');
+  headerTotalElem.innerText = 'Daily Total';
+  row1.appendChild(headerTotalElem);
 }
 
 function tableTotals() {
@@ -103,7 +108,7 @@ function renderAll() {
 }
 
 function hourlyTotalCookies() {
-  for (let i = 0; i < hours.length; i++) {
+  for (let i = 0; i <= hours.length; i++) {
     let hourlyCookies = 0;
     for (let j = 0; j < storeArray.length; j++) {
       hourlyCookies += storeArray[j]['cookiesBought'][i];
