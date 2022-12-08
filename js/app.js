@@ -11,6 +11,8 @@ let hourlyTotals = [];
 
 let myForm = document.getElementById('my-form');
 let tableElem = document.getElementById('sales-table');
+let totalElem = document.getElementsByClassName('totals');
+
 
 // ******HELPER FUNCTIONS / UTILITIES******
 
@@ -78,6 +80,7 @@ function tableHours() {
 
 function tableTotals() {
   let row1 = document.createElement('tr');
+  row1.className = 'totals';
   tableElem.appendChild(row1);
 
   let blankElem = document.createElement('th');
@@ -125,7 +128,9 @@ myForm.addEventListener('submit', handleSubmit);   // executable code
 
 function handleSubmit(event){
   event.preventDefault();  // prevent default browser handling
-  console.log('form submitted');
+  const currentTotal = document.querySelector('tr:last-child');
+  currentTotal.remove();
+  
   // TODO: grab info submitted in form
 
   let name = event.target.name.value;
@@ -142,14 +147,14 @@ function handleSubmit(event){
 
   // call render for new object
   storeArray.push(newStore);
-
   newStore.getCookiesBought();
   newStore.render();
+  
+  // myForm.reset();
 
-  myForm.reset();
-
-  // TODO: remove footer and then call the functions to total all stores again
-
+  hourlyTotals = [];
+  hourlyTotalCookies();
+  tableTotals();
 }
 
 tableHours();
