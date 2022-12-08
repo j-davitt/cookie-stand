@@ -9,7 +9,7 @@ let hourlyTotals = [];
 
 // *****DOM WINDOWS******
 
-// let locationSection = document.getElementById('location-data');
+let myForm = document.getElementById('my-form');
 let tableElem = document.getElementById('sales-table');
 
 // ******HELPER FUNCTIONS / UTILITIES******
@@ -117,6 +117,41 @@ function hourlyTotalCookies() {
   }
 }
 
+// attach event listener
+
+myForm.addEventListener('submit', handleSubmit);   // executable code
+
+// Define event handler
+
+function handleSubmit(event){
+  event.preventDefault();  // prevent default browser handling
+  console.log('form submitted');
+  // TODO: grab info submitted in form
+
+  let name = event.target.name.value;
+
+  let minCust = +event.target.minCust.value;
+
+  let maxCust = +event.target.maxCust.value;
+
+  let avgCookie = +event.target.avgCookie.value;
+
+  // TODO: create new object using constructor
+
+  let newStore = new Store(name, minCust, maxCust, avgCookie);
+
+  // call render for new object
+  storeArray.push(newStore);
+
+  newStore.getCookiesBought();
+  newStore.render();
+
+  myForm.reset();
+
+  // TODO: remove footer and then call the functions to total all stores again
+
+}
+
 tableHours();
 
 renderAll();
@@ -124,3 +159,5 @@ renderAll();
 hourlyTotalCookies();
 
 tableTotals();
+
+
