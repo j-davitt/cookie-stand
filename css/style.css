@@ -79,3 +79,9 @@ p {
   margin: auto;
   width: fit-content;
 }
+
+#my-form fieldset{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}

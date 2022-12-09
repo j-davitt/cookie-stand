@@ -9,8 +9,10 @@ let hourlyTotals = [];
 
 // *****DOM WINDOWS******
 
-// let locationSection = document.getElementById('location-data');
+let myForm = document.getElementById('my-form');
 let tableElem = document.getElementById('sales-table');
+let totalElem = document.getElementsByClassName('totals');
+
 
 // ******HELPER FUNCTIONS / UTILITIES******
 
@@ -78,6 +80,7 @@ function tableHours() {
 
 function tableTotals() {
   let row1 = document.createElement('tr');
+  row1.className = 'totals';
   tableElem.appendChild(row1);
 
   let blankElem = document.createElement('th');
@@ -117,6 +120,62 @@ function hourlyTotalCookies() {
   }
 }
 
+// attach event listener
+
+myForm.addEventListener('submit', handleSubmit);   // executable code
+
+// Define event handler
+
+function handleSubmit(event){
+  event.preventDefault();  // prevent default browser handling
+  
+  // TODO: grab info submitted in form
+  
+  let name = event.target.name.value;
+  let minCust = +event.target.minCust.value;
+  let maxCust = +event.target.maxCust.value;
+  let avgCookie = +event.target.avgCookie.value;
+
+  let newStore = new Store(name, minCust, maxCust, avgCookie);
+  // check to see if store name has been submitted
+  let nameTest = storeArray.findIndex(x => x.name.toLowerCase() === name.toLowerCase());
+  if(nameTest >= 0) {
+    const removeElem = document.querySelector('tr:nth-child(' + (nameTest + 2) + ')');
+    removeElem.remove();
+
+    storeArray[nameTest].minCust = minCust;
+    storeArray[nameTest].maxCust = maxCust;
+    storeArray[nameTest].avgCookie = avgCookie;
+    storeArray[nameTest].cookiesBought = [];
+
+    const currentTotal = document.querySelector('tr:last-child');
+    currentTotal.remove();
+
+    storeArray[nameTest].getCookiesBought();
+    storeArray[nameTest].render();
+
+    hourlyTotals = [];
+    hourlyTotalCookies();
+    tableTotals();
+  }
+  if(nameTest === -1){
+    // TODO: create new object using constructor
+      
+    const currentTotal = document.querySelector('tr:last-child');
+    currentTotal.remove();
+    // call render for new object
+    storeArray.push(newStore);
+    newStore.getCookiesBought();
+    newStore.render();
+      
+    // myForm.reset();
+    
+    hourlyTotals = [];
+    hourlyTotalCookies();
+    tableTotals();
+  }
+}
+
 tableHours();
 
 renderAll();
@@ -124,3 +183,4 @@ renderAll();
 hourlyTotalCookies();
 
 tableTotals();
+
