@@ -110,6 +110,12 @@ function renderAll() {
   }
 }
 
+function renderStores() {
+  for (let i = 0; i < storeArray.length; i++) {
+    storeArray[i].render();
+  }
+}
+
 function hourlyTotalCookies() {
   for (let i = 0; i <= hours.length; i++) {
     let hourlyCookies = 0;
@@ -140,20 +146,23 @@ function handleSubmit(event){
   // check to see if store name has been submitted
   let nameTest = storeArray.findIndex(x => x.name.toLowerCase() === name.toLowerCase());
   if(nameTest >= 0) {
-    const removeElem = document.querySelector('tr:nth-child(' + (nameTest + 2) + ')');
-    removeElem.remove();
+    // const removeElem = document.querySelector('tr:nth-child(' + (nameTest + 2) + ')');
+    // removeElem.remove();
+
+    const removeElem = document.querySelectorAll('tr').forEach(e => e.remove());
 
     storeArray[nameTest].minCust = minCust;
     storeArray[nameTest].maxCust = maxCust;
     storeArray[nameTest].avgCookie = avgCookie;
     storeArray[nameTest].cookiesBought = [];
 
-    const currentTotal = document.querySelector('tr:last-child');
-    currentTotal.remove();
+    // const currentTotal = document.querySelector('tr:last-child');
+    // currentTotal.remove();
 
     storeArray[nameTest].getCookiesBought();
-    storeArray[nameTest].render();
-
+    // storeArray[nameTest].render();
+    tableHours();
+    renderStores();
     hourlyTotals = [];
     hourlyTotalCookies();
     tableTotals();
