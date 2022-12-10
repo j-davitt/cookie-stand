@@ -41,6 +41,7 @@ ul {
 table, th, td {
   border: 1px double;
   padding: 3px;
+  background-color: lightgray;
 }
 
 th {
